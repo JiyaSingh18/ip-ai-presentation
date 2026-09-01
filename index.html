@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<title>M4K4-D · IP & Innovation in AI</title>
+<title>Makad · IP & Innovation in AI</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -10,472 +10,379 @@ html,body{height:100%;overflow:hidden;background:#000;font-family:Inter,system-u
 
 .viewport{position:fixed;top:0;left:0;right:0;bottom:44px;display:flex;align-items:center;justify-content:center}
 .deck{width:1280px;height:720px;transform:scale(var(--sc,1));position:relative}
-.slide{position:absolute;inset:0;background:#0f1117;color:#e8e6e3;display:none;flex-direction:column;padding:36px 52px 28px}
+.slide{position:absolute;inset:0;background:#0f1117;color:#e8e6e3;display:none;flex-direction:column;padding:44px 56px 36px}
 .slide.active{display:flex}
 
 .bar{position:fixed;bottom:0;left:0;right:0;height:44px;background:#12141a;border-top:1px solid #2a2d36;display:flex;align-items:center;justify-content:center;gap:14px;font-size:11px;color:#888}
 .bar button{background:#1e2129;border:1px solid #333;color:#ccc;padding:5px 14px;border-radius:4px;cursor:pointer;font:inherit}
 
-.kicker{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#e8a030;margin-bottom:6px}
-.rubric{font-size:9px;color:#666;margin-bottom:4px;font-style:italic}
-h1{font-size:30px;font-weight:700;color:#ffffff;line-height:1.15;margin-bottom:8px}
-.lead{font-size:13px;color:#b0b4bc;line-height:1.5;margin-bottom:12px;max-width:920px}
-.body{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column}
-.footer{margin-top:auto;padding-top:8px;text-align:right;font-size:10px;color:#555}
+.kicker{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#e8a030;margin-bottom:8px}
+h1{font-size:34px;font-weight:700;color:#ffffff;line-height:1.15;margin-bottom:10px}
+.lead{font-size:15px;color:#b0b4bc;line-height:1.55;margin-bottom:18px;max-width:900px}
+.body{flex:1;min-height:0;display:flex;flex-direction:column;gap:14px;overflow:hidden}
+.footer{margin-top:auto;padding-top:12px;font-size:11px;color:#555;text-align:right}
 
-.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;flex:1;min-height:0}
-.three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;flex:1;min-height:0}
-.box{background:#181b24;border:1px solid #2a2d36;border-radius:10px;padding:16px 18px;height:100%;overflow:hidden}
-.box h2{font-size:13px;font-weight:600;color:#e8a030;margin-bottom:8px}
-.box p,.box li{font-size:12px;color:#b0b4bc;line-height:1.5}
-.box ul{padding-left:14px}
-.box li{margin-bottom:5px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;flex:1;min-height:0}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;flex:1;min-height:0}
+.box{background:#181b24;border:1px solid #2a2d36;border-radius:10px;padding:20px 22px;height:100%;overflow:hidden}
+.box h2{font-size:14px;font-weight:600;color:#e8a030;margin-bottom:10px}
+.box p,.box li{font-size:13px;color:#b0b4bc;line-height:1.55}
+.box ul{margin:0;padding-left:18px}
+.box li{margin-bottom:6px}
 .box li strong{color:#fff}
 
-.callout{background:rgba(232,160,48,.08);border:1px solid rgba(232,160,48,.25);border-radius:8px;padding:12px 16px;margin-top:8px}
-.callout p{font-size:12px;color:#ddd;line-height:1.45}
+.callout{background:rgba(232,160,48,.08);border:1px solid rgba(232,160,48,.25);border-radius:10px;padding:16px 20px}
+.callout p{font-size:14px;color:#ddd;line-height:1.55}
 .callout strong{color:#e8a030}
 
-.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.fact{background:#181b24;border:1px solid #2a2d36;border-radius:8px;padding:10px;text-align:center}
-.fact b{display:block;font-size:16px;color:#e8a030;margin-bottom:2px}
-.fact span{font-size:9px;color:#888;text-transform:uppercase}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.fact{background:#181b24;border:1px solid #2a2d36;border-radius:8px;padding:14px;text-align:center}
+.fact b{display:block;font-size:20px;color:#e8a030;margin-bottom:4px}
+.fact span{font-size:10px;color:#888;text-transform:uppercase;letter-spacing:.04em}
 
 .imgbox{flex:1;min-height:0;border-radius:10px;overflow:hidden;border:1px solid #2a2d36;background:#0a0b10}
 .imgbox img{width:100%;height:100%;object-fit:contain;display:block}
 
-table.data{width:100%;border-collapse:collapse;font-size:11px}
-table.data th{background:#1e2129;padding:7px 9px;text-align:left;font-size:8px;color:#888;text-transform:uppercase;border-bottom:1px solid #2a2d36}
-table.data td{padding:7px 9px;border-bottom:1px solid #222;color:#b0b4bc;vertical-align:top;line-height:1.4}
-table.data td strong{color:#fff}
-table.data tr:last-child td{border:none}
-
-.tag{display:inline-block;font-size:8px;font-weight:600;padding:2px 6px;border-radius:4px;background:rgba(232,160,48,.12);color:#e8a030;border:1px solid rgba(232,160,48,.25)}
-.tag.dim{background:rgba(120,120,120,.12);color:#888;border-color:rgba(120,120,120,.25)}
-.tag.green{background:rgba(80,200,120,.12);color:#5dc88a;border-color:rgba(80,200,120,.25)}
-
 .steps{counter-reset:step;list-style:none}
-.steps li{counter-increment:step;font-size:12px;color:#b0b4bc;padding:6px 0 6px 30px;border-bottom:1px solid #222;position:relative;line-height:1.4}
+.steps li{counter-increment:step;font-size:13px;color:#b0b4bc;padding:8px 0 8px 32px;border-bottom:1px solid #222;position:relative;line-height:1.45}
 .steps li:last-child{border:none}
-.steps li::before{content:counter(step);position:absolute;left:0;top:6px;width:20px;height:20px;background:#e8a030;color:#000;font-size:10px;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.steps li::before{content:counter(step);position:absolute;left:0;top:8px;width:22px;height:22px;background:#e8a030;color:#000;font-size:11px;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center}
 
-.grid-map{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;flex:1;min-height:0}
-.map-item{background:#181b24;border:1px solid #2a2d36;border-radius:8px;padding:12px 14px}
-.map-item b{display:block;font-size:11px;color:#e8a030;margin-bottom:4px}
-.map-item span{font-size:11px;color:#99aabb;line-height:1.4}
+table.data{width:100%;border-collapse:collapse;font-size:12px}
+table.data th{background:#1e2129;padding:9px 11px;text-align:left;font-size:10px;color:#888;text-transform:uppercase;border-bottom:1px solid #2a2d36}
+table.data td{padding:9px 11px;border-bottom:1px solid #222;color:#b0b4bc;vertical-align:top;line-height:1.45}
+table.data td strong{color:#fff}
 
-.slide.hero{padding:0}
+.card{background:#181b24;border:1px solid #2a2d36;border-radius:10px;padding:16px 18px}
+.card h3{font-size:13px;font-weight:700;color:#e8a030;margin-bottom:6px}
+.card p{font-size:12px;color:#99aabb;line-height:1.45}
+
+.flow{display:flex;align-items:center;justify-content:center;gap:8px;flex:1;min-height:0;padding:8px 0}
+.flow .node{background:#181b24;border:1px solid #2a2d36;border-radius:8px;padding:12px 14px;text-align:center;font-size:11px;color:#b0b4bc;line-height:1.4;min-width:100px}
+.flow .node b{display:block;color:#fff;font-size:12px;margin-bottom:4px}
+.flow .node.hl{border-color:rgba(232,160,48,.4);background:rgba(232,160,48,.06)}
+.flow .arr{color:#e8a030;font-size:18px;flex-shrink:0}
+
+.slide.hero{padding:0;justify-content:flex-end}
 .slide.hero .bg{position:absolute;inset:0}
 .slide.hero .bg img{width:100%;height:100%;object-fit:cover}
-.slide.hero .overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,11,16,.95) 0%,rgba(10,11,16,.55) 48%,transparent 100%)}
-.slide.hero .hero-text{position:relative;z-index:2;padding:56px 64px;max-width:640px;display:flex;flex-direction:column;justify-content:center;height:100%}
-.slide.hero h1{font-size:48px;margin-bottom:8px;color:#fff}
-.slide.hero .hero-sub{font-size:16px;color:#aaa;margin-bottom:24px;line-height:1.45}
-.slide.hero .hero-meta{font-size:13px;color:#777;line-height:2.2}
+.slide.hero .overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,11,16,.95) 0%,rgba(10,11,16,.6) 50%,transparent 100%)}
+.slide.hero .hero-text{position:relative;z-index:2;padding:56px 64px;max-width:620px}
+.slide.hero h1{font-size:52px;margin-bottom:6px;color:#fff}
+.slide.hero .hero-sub{font-size:18px;color:#aaa;margin-bottom:28px;line-height:1.45}
+.slide.hero .hero-meta{font-size:14px;color:#777;line-height:2.2}
 .slide.hero .hero-meta b{color:#eee}
-.slide.hero.center .hero-text{max-width:100%;align-items:center;text-align:center}
+.slide.hero.center .hero-text{max-width:100%;align-items:center;text-align:center;display:flex;flex-direction:column;justify-content:center;height:100%}
 </style>
 </head>
 <body>
 
 <div class="viewport"><div class="deck">
 
-<!-- 01 TITLE -->
+<!-- 1 TITLE -->
 <section class="slide hero active">
   <div class="bg"><img src="assets/makad-wall-e-hybrid-wheel-concept.png" alt=""/></div>
   <div class="overlay"></div>
   <div class="hero-text">
-    <div class="kicker">Intellectual Property & Innovation in AI</div>
-    <h1>M4K4-D / Makad</h1>
-    <p class="hero-sub">IP analysis of an expressive AI companion floor droid — applied to my design project</p>
-    <div class="hero-meta"><b>Jiya Singh</b> · 2309397<br>github.com/JiyaSingh18/M4K4-D</div>
-  </div>
-</section>
-
-<!-- 02 AGENDA / RUBRIC MAP -->
-<section class="slide">
-  <div class="rubric">Presentation structure · maps to evaluation criteria</div>
-  <div class="kicker">Overview</div>
-  <h1>What this presentation covers</h1>
-  <p class="lead">IP types defined and applied to Makad — not generic theory, but what each type means and whether it fits my project.</p>
-  <div class="body grid-map">
-    <div class="map-item"><b>① Concept clarity</b><span>Define Copyright, Patent, Trade Secret, Trademark, Research Paper, Industry Product — applied to Makad</span></div>
-    <div class="map-item"><b>② Case studies</b><span><em>Thaler v. Perlmutter</em> (AI authorship) + Anki Vector (industry product shutdown)</span></div>
-    <div class="map-item"><b>③ AI/ML relevance</b><span>Cloud NLU, vision tracking, human-authored vs AI-generated layers in Makad</span></div>
-    <div class="map-item"><b>④ Critical analysis</b><span>Gaps, ethical/policy issues (DPDP, EU AI Act), future outlook</span></div>
-    <div class="map-item"><b>⑤ Research & sources</b><span>Copyright Act 1957, WIPO, USPTO, USCO, Plos One, verified news</span></div>
-    <div class="map-item"><b>⑥ Q&A</b><span>Prepared answers on authorship, Star Wars line, cloud dependency, filing strategy</span></div>
-  </div>
-  <div class="footer">02 / 15</div>
-</section>
-
-<!-- 03 MAKAD CONTEXT -->
-<section class="slide">
-  <div class="kicker">Project Context</div>
-  <h1>What is Makad?</h1>
-  <p class="lead">Before IP analysis — the product this presentation is about.</p>
-  <div class="body two">
-    <div class="box">
-      <h2>M4K4-D / Makad</h2>
-      <p style="margin-bottom:8px">~30 cm wheeled AI companion droid. Coordinates <strong>face + 3-axis head + astromech audio + wheels</strong> into one expressive character.</p>
-      <ul>
-        <li><strong>AI/ML:</strong> cloud NLU (speech→intent), Pi Cam person tracking (OpenCV/MediaPipe)</li>
-        <li><strong>Human-authored:</strong> 19 head motions, face animations, astromech sound library, 50+ docs</li>
-        <li><strong>Priority:</strong> <em>"M4 should feel alive"</em> — personality IP, not raw model weights</li>
-        <li><strong>Status:</strong> design + documentation phase; V1 target Dec 2026; public GitHub repo</li>
-      </ul>
+    <div class="kicker">IP & Innovation in AI</div>
+    <h1>Makad</h1>
+    <p class="hero-sub">How intellectual property and innovation apply to my expressive AI floor droid project</p>
+    <div class="hero-meta">
+      <b>Jiya Singh</b> · 2309397<br>
+      M4K4-D · github.com/JiyaSingh18/M4K4-D
     </div>
-    <div class="imgbox"><img src="assets/mvp1.png" alt="Makad MVP"/></div>
   </div>
-  <div class="footer">03 / 15</div>
 </section>
 
-<!-- 04 CONCEPT CLARITY - ALL IP TYPES DEFINED -->
+<!-- 2 WHAT IS MAKAD -->
 <section class="slide">
-  <div class="rubric">Criterion ① · Concept Clarity & Definition of IP Type</div>
-  <div class="kicker">IP Types Defined</div>
-  <h1>Six IP categories — definition & Makad fit</h1>
-  <div class="body"><table class="data">
-    <tr><th>IP type</th><th>Definition</th><th>Applies to Makad?</th></tr>
-    <tr>
-      <td><strong>Copyright</strong> <span class="tag green">Primary</span></td>
-      <td>Legal right over original expressive works fixed in a medium — code, art, audio, literature (§13, Copyright Act 1957)</td>
-      <td><strong>Yes.</strong> Animations, astromech sounds, storyboard, renders, firmware, docs — all my authored works. Automatic on creation.</td>
-    </tr>
-    <tr>
-      <td><strong>Patent</strong> <span class="tag dim">Limited</span></td>
-      <td>20-year monopoly on a novel, non-obvious invention with industrial application (§2(1)(j), Patents Act 1970)</td>
-      <td><strong>Unlikely now.</strong> 3-axis head mechanism has prior art in desktop robots. Student V1 doesn't justify filing cost or novelty bar.</td>
-    </tr>
-    <tr>
-      <td><strong>Trade Secret</strong> <span class="tag dim">Limited</span></td>
-      <td>Confidential business information giving competitive advantage — protected by secrecy, not registration</td>
-      <td><strong>Contradicted.</strong> Architecture and storyboard are public on GitHub. Motion tuning could be secret only if kept private pre-demo.</td>
-    </tr>
-    <tr>
-      <td><strong>Trademark</strong> <span class="tag dim">Future</span></td>
-      <td>Registered mark identifying product origin and preventing consumer confusion (Trade Marks Act 1999)</td>
-      <td><strong>Not yet.</strong> "Makad" / "M4K4-D" aren't commercial products. Would matter if I productized and entered market.</td>
-    </tr>
-    <tr>
-      <td><strong>Research Paper</strong> <span class="tag">Academic</span></td>
-      <td>Published scholarly work — creates prior art, cites existing knowledge, documents original contribution</td>
-      <td><strong>Yes — inbound.</strong> RP-01 storyboard cites Plos One 2024 nod kinematics. My docs are original; cited papers constrain patent claims.</td>
-    </tr>
-    <tr>
-      <td><strong>Industry Product</strong> <span class="tag">Comparator</span></td>
-      <td>Commercial product whose IP portfolio, licensing, and shutdown behaviour inform strategy</td>
-      <td><strong>Yes — Anki Vector.</strong> Direct parallel: AI companion robot, cloud NLU, expressive face, company shutdown 2019.</td>
-    </tr>
-  </table></div>
-  <div class="footer">04 / 15 · Indian Copyright Act 1957 · Patents Act 1970 · Trade Marks Act 1999</div>
-</section>
-
-<!-- 05 COPYRIGHT DEEP DIVE -->
-<section class="slide">
-  <div class="rubric">Criterion ① · Copyright applied to Makad</div>
-  <div class="kicker">Copyright</div>
-  <h1>Makad's strongest IP — what copyright protects</h1>
+  <div class="kicker">The Project</div>
+  <h1>What is Makad?</h1>
+  <p class="lead">Before IP — the product this talk is about.</p>
   <div class="body two">
     <div class="box">
-      <h2>Copyrightable works in my project</h2>
+      <h2>In plain English</h2>
+      <p style="margin-bottom:12px"><strong style="color:#fff">Makad (M4K4-D, "M4")</strong> is a ~30 cm wheeled companion robot — R2-D2 in spirit, not a smart speaker. It lives on your floor, hears you in normal English, tracks you with a camera, moves its head expressively, makes original droid sounds, and can follow you around a room.</p>
+      <p>Everything — screen, head, sound, wheels — is timed together so M4 feels like <strong style="color:#fff">one living character</strong>, not separate tech demos bolted together.</p>
+      <div class="facts" style="grid-template-columns:repeat(3,1fr);margin-top:14px">
+        <div class="fact"><b>19</b><span>Head motions</span></div>
+        <div class="fact"><b>21</b><span>Core features</span></div>
+        <div class="fact"><b>Dec '26</b><span>V1 target</span></div>
+      </div>
+    </div>
+    <div class="imgbox"><img src="assets/mvp1.png" alt="Makad"/></div>
+  </div>
+  <div class="footer">2 / 13</div>
+</section>
+
+<!-- 3 INNOVATION -->
+<section class="slide">
+  <div class="kicker">Innovation</div>
+  <h1>What's actually new in Makad</h1>
+  <p class="lead">The innovation isn't a better AI model — it's how AI output gets turned into character.</p>
+  <div class="body three">
+    <div class="card">
+      <h3>Expression composer</h3>
+      <p>One semantic intent ("user said yes") → coordinated face + head + astromech sound + wheel motion at the same time. No channel leads alone.</p>
+    </div>
+    <div class="card">
+      <h3>Asymmetric language</h3>
+      <p>M4 understands human speech (English) but responds in an <em>authored droid language</em> — not English TTS. Original sounds, original grammar.</p>
+    </div>
+    <div class="card">
+      <h3>Research-grounded motion</h3>
+      <p>19 head motions with human nod/shake kinematics (Plos One 2024), minimum-jerk profiles MJ5/MS7 — not sine-wave servos.</p>
+    </div>
+    <div class="card">
+      <h3>3-axis expressive head</h3>
+      <p>Yaw + pitch + roll in a 60 mm neck on a floor droid. Face renders locally on ESP32 — semantic state, not video over a moving neck.</p>
+    </div>
+    <div class="card">
+      <h3>Anticipatory character</h3>
+      <p>Head and eyes move <em>before</em> the body accelerates — feedforward animation, like puppetry research (WALL-E, BB-8 refs).</p>
+    </div>
+    <div class="card">
+      <h3>Safety-separated layers</h3>
+      <p>Seeing a person ≠ permission to drive. Motion safety runs independently even if cloud AI or Pi crashes.</p>
+    </div>
+  </div>
+  <div class="footer">3 / 13</div>
+</section>
+
+<!-- 4 MY ORIGINAL WORK = IP -->
+<section class="slide">
+  <div class="kicker">IP in Makad</div>
+  <h1>What I created — and what copyright protects</h1>
+  <p class="lead">Most of Makad's value is original creative work I authored. That's copyright — automatic the moment it's fixed.</p>
+  <div class="body two">
+    <div class="box">
+      <h2>My original assets</h2>
       <ul>
-        <li><strong>Astromech audio library</strong> — human-composed droid sounds (§13: literary + sound recording)</li>
-        <li><strong>Face animations</strong> — LVGL expressions on ESP32; idle loops, reactive eyes</li>
-        <li><strong>Head motion storyboard</strong> — 19 authored keyframe sequences HM-00→HM-18</li>
-        <li><strong>Concept renders & CAD</strong> — industrial design visuals (repo assets)</li>
-        <li><strong>Source code</strong> — firmware, behaviour system, expression composer</li>
-        <li><strong>Documentation</strong> — vision, system brief, 14 specsheets, MEMORY.md</li>
+        <li><strong>19 head motions</strong> — HM-00→HM-18 storyboard: keyframes, timing, curve codes, cross-axis compounds</li>
+        <li><strong>Face animation system</strong> — procedural layers on LVGL: two-eye identity, gaze, lids, music-reactive vibe</li>
+        <li><strong>Astromech sound library</strong> — human-composed droid vocabulary (A-wake-rise, A-affirm, A-laugh…) — not film rips</li>
+        <li><strong>Expression composer</strong> — firmware + docs defining how channels coordinate and interrupt</li>
+        <li><strong>Design & docs</strong> — renders, CAD direction, vision, 14 specsheets, 31K+ lines of project documentation</li>
       </ul>
-      <div class="callout"><p><strong>Author:</strong> Jiya Singh · Protection automatic on fixation · Registration optional but strengthens proof (copyright.gov.in)</p></div>
+      <div class="callout"><p><strong>Author:</strong> Jiya Singh · Indian Copyright Act §13 · literary works, artistic works, sound recordings, software</p></div>
     </div>
     <div class="imgbox"><img src="assets/mvp3.png" alt="Makad design"/></div>
   </div>
-  <div class="footer">05 / 15</div>
+  <div class="footer">4 / 13</div>
 </section>
 
-<!-- 06 PATENT / TRADE SECRET / TRADEMARK -->
+<!-- 5 AI STACK -->
 <section class="slide">
-  <div class="rubric">Criterion ① · Patent, Trade Secret, Trademark applied to Makad</div>
-  <div class="kicker">Other IP Types</div>
-  <h1>Why patent, trade secret & trademark are secondary for Makad</h1>
-  <div class="body three">
-    <div class="box">
-      <h2>Patent</h2>
-      <p style="margin-bottom:6px"><strong>Definition:</strong> Novel invention — mechanism or method with industrial use.</p>
-      <ul>
-        <li>Candidate: 3-axis head (yaw+pitch+roll) in 60 mm neck</li>
-        <li>Candidate: expression composer (face+head+sound sync)</li>
-        <li><strong>Blocker:</strong> prior art — Cozmo, research platforms, Plos One nod data</li>
-        <li><strong>My call:</strong> document in specs; don't file for student V1</li>
-      </ul>
+  <div class="kicker">AI in Makad</div>
+  <h1>Where AI fits — and what I don't own</h1>
+  <p class="lead">Makad uses AI for understanding and perception. The character layer on top is mine.</p>
+  <div class="body">
+    <div class="flow">
+      <div class="node">You speak<br><b>Human language</b></div>
+      <div class="arr">→</div>
+      <div class="node">Cloud STT + intent<br><b>Third-party AI</b></div>
+      <div class="arr">→</div>
+      <div class="node hl">Expression composer<br><b>My system</b></div>
+      <div class="arr">→</div>
+      <div class="node hl">Face + head + sound + wheels<br><b>My authored output</b></div>
     </div>
-    <div class="box">
-      <h2>Trade Secret</h2>
-      <p style="margin-bottom:6px"><strong>Definition:</strong> Confidential know-how — MJ5 motion params, behaviour timing.</p>
-      <ul>
-        <li>Could protect: motion profile numbers, composer timing tables</li>
-        <li><strong>Blocker:</strong> public GitHub repo publishes architecture + storyboard</li>
-        <li>India: no standalone statute — NDAs + access control only</li>
-        <li><strong>My call:</strong> keep tuning private until demo; can't claim secrecy on published docs</li>
-      </ul>
-    </div>
-    <div class="box">
-      <h2>Trademark</h2>
-      <p style="margin-bottom:6px"><strong>Definition:</strong> Brand name/logo — "Makad", "M4K4-D", "M4".</p>
-      <ul>
-        <li>Class 9 (apparatus) + Class 42 (software) if productized</li>
-        <li><strong>Risk:</strong> must not use Disney/Lucasfilm marks (R2-D2, BB-8)</li>
-        <li>Makad name is original — no confusion with existing marks</li>
-        <li><strong>My call:</strong> register only if moving beyond academic prototype</li>
-      </ul>
-    </div>
+    <table class="data" style="margin-top:12px">
+      <tr><th>Layer</th><th>Who owns it</th><th>IP note</th></tr>
+      <tr><td><strong>Cloud STT / NLU</strong></td><td>API provider (Whisper-class)</td><td>Their model, their ToS — I own my intent mappings and character responses</td></tr>
+      <tr><td><strong>Person tracking</strong></td><td>OpenCV/MediaPipe + my code</td><td>OSS license on library; copyright on my integration and tuning</td></tr>
+      <tr><td><strong>Face, sound, motion</strong></td><td>Me — fully authored</td><td>Strongest IP; not AI-generated (<em>Thaler v. Perlmutter</em>, 2023)</td></tr>
+      <tr><td><strong>Spotify playback</strong></td><td>Spotify API</td><td>Developer ToS only — demo use, no rebranding</td></tr>
+    </table>
   </div>
-  <div class="footer">06 / 15 · USPTO Patent Public Search · ipindia.gov.in</div>
+  <div class="footer">5 / 13</div>
 </section>
 
-<!-- 07 RESEARCH PAPER -->
+<!-- 6 INSPIRATION RISK -->
 <section class="slide">
-  <div class="rubric">Criterion ① · Research Paper · Criterion ⑤ · Academic source</div>
-  <div class="kicker">Research Paper</div>
-  <h1>Academic prior art in Makad's design pipeline</h1>
+  <div class="kicker">IP Risk</div>
+  <h1>Star Wars inspiration — where's the line?</h1>
+  <p class="lead">Makad is inspired by the astromech companion archetype. That's not the same as copying protected work.</p>
   <div class="body two">
     <div class="box">
-      <h2>RP-01 storyboard & cited research</h2>
+      <h2>What Makad does (safe)</h2>
       <ul>
-        <li><strong>Plos One 2024</strong> — human nod kinematics data used to inform head motion timing (not copied)</li>
-        <li><strong>RP-01 storyboard v0.2</strong> — my original 19-motion choreography; cites research, adds authored keyframes</li>
-        <li><strong>Prior art function:</strong> published papers establish what is already known — limits patent novelty claims</li>
-        <li><strong>My contribution:</strong> applying nod research to a 3-axis astromech head in a 30 cm floor droid — documented in specsheets</li>
-      </ul>
-      <div class="callout"><p><strong>Distinction:</strong> citing a paper ≠ owning it. My copyright covers the storyboard and implementation; the paper's authors hold theirs.</p></div>
-    </div>
-    <div class="imgbox"><img src="assets/mvp-after-head-servo-archv1.png" alt="Head mechanism"/></div>
-  </div>
-  <div class="footer">07 / 15 · Plos One 2024 · M4K4-D RP-01 storyboard</div>
-</section>
-
-<!-- 08 CASE STUDY THALER -->
-<section class="slide">
-  <div class="rubric">Criterion ② · Case Study · Landmark dispute</div>
-  <div class="kicker">Landmark Case</div>
-  <h1>Thaler v. Perlmutter (2023) — can AI be an author?</h1>
-  <div class="body two">
-    <div class="box">
-      <h2>Case facts</h2>
-      <ul>
-        <li>Dr. Stephen Thaler claimed AI system "DABUS" authored an image — sought US copyright registration</li>
-        <li>US Copyright Office refused — copyright requires human authorship</li>
-        <li>D.D.C. affirmed March 2023: <em>"human creativity is the sine qua non at the core of copyright"</em></li>
-        <li>WIPO and USCO (2023 guidance) align: AI-assisted OK; AI-alone not an author</li>
+        <li>Original name: Makad, M4K4-D, M4 — not R2-D2 or BB-8</li>
+        <li>Original astromech sounds — composed for this project, documented in intent.md as "not copied film samples"</li>
+        <li>Original silhouette — wheeled floor droid, own head cartridge, scrappy industrial look</li>
+        <li>Genre trope: "small loyal droid companion" — ideas aren't copyrightable, expression is</li>
       </ul>
     </div>
     <div class="box">
-      <h2>Relevance to Makad</h2>
+      <h2>What would cross the line</h2>
       <ul>
-        <li>Makad uses <strong>cloud NLU</strong> (AI) but all protectable assets are <strong>human-authored</strong></li>
-        <li>Face animations, astromech sounds, head motions — designed by me, not generated by model</li>
-        <li>AI is a <strong>tool in the pipeline</strong> (speech recognition, tracking) — not the author of expressive works</li>
-        <li>If I used AI to generate animations, I'd need to document human creative input for copyright validity</li>
+        <li>Film-accurate R2 sound effects or visual decals</li>
+        <li>Disney/Lucasfilm trademarked names or character likeness</li>
+        <li>Marketing as a "Star Wars robot" product</li>
       </ul>
-      <div class="callout"><p><strong>Takeaway:</strong> Makad's IP strategy depends on tracing authorship to human design decisions — which my docs and git history support.</p></div>
+      <div class="callout"><p><strong>For V1:</strong> Makad is <em>inspired by</em> the archetype — every protectable asset (sound, motion, face) is original authored work.</p></div>
     </div>
   </div>
-  <div class="footer">08 / 15 · Thaler v. Perlmutter, D.D.C. 2023 · USCO AI Guidance 2023 · WIPO IP & AI Toolkit 2024</div>
+  <div class="footer">6 / 13 · Copyright protects expression, not ideas</div>
 </section>
 
-<!-- 09 CASE STUDY ANKI -->
+<!-- 7 CASE STUDY ANKI -->
 <section class="slide">
-  <div class="rubric">Criterion ② · Case Study · Industry Product</div>
-  <div class="kicker">Industry Product</div>
-  <h1>Anki Vector (2018) — when an AI robot company shuts down</h1>
+  <div class="kicker">Case Study</div>
+  <h1>Anki Vector — what happens when the company dies?</h1>
+  <p class="lead">Real industry example closest to Makad: AI companion robot, cloud brain, expressive face, personality behaviours.</p>
   <div class="body two">
     <div class="imgbox"><img src="assets/mvp2.png" alt="Makad concept"/></div>
     <div class="box">
-      <h2>Case facts & lessons for Makad</h2>
+      <h2>What happened (2019)</h2>
       <ul>
-        <li><strong>Anki</strong> sold Vector — cloud NLU, expressive LCD face, personality behaviours (~$250 consumer robot)</li>
-        <li>Company bankrupt April 2019 — cloud servers offline; robots lost voice/personality features</li>
-        <li>IP assets (patents, trademarks, codebase) sold to Digital Dream Labs — revival depended on new owner</li>
-        <li>Community Wire-Pod replaced cloud only after DDL open-sourced server code years later</li>
+        <li>Anki sold Vector (~$250) — cloud NLU, LCD face, personality engine</li>
+        <li>Company bankrupt → cloud servers offline → robots lost voice and personality</li>
+        <li>Codebase and IP sold to Digital Dream Labs — revival depended on new owner</li>
+        <li>Community Wire-Pod fixed it only after DDL open-sourced server code years later</li>
       </ul>
-      <ul style="margin-top:8px">
-        <li><strong>Makad parallel:</strong> same cloud NLU dependency, same "character layer" as core value</li>
-        <li><strong>My response:</strong> open architecture on GitHub; own expression layer (sounds + motions); API ToS audit</li>
+      <h2 style="margin-top:14px">What I take from this for Makad</h2>
+      <ul>
+        <li>The <strong>character layer</strong> (animations, sounds, behaviour timing) is the valuable IP — not the cloud model</li>
+        <li>Cloud NLU is a dependency risk — I document architecture openly but own my expression layer</li>
+        <li>If Makad ever ships, personality IP must survive independently of any one API provider</li>
       </ul>
-      <div class="callout"><p><strong>Source:</strong> TechCrunch Apr 2019 · DDL acquisition filings · Wire-Pod docs</p></div>
     </div>
   </div>
-  <div class="footer">09 / 15</div>
+  <div class="footer">7 / 13 · TechCrunch Apr 2019 · Wire-Pod docs</div>
 </section>
 
-<!-- 10 AI/ML RELEVANCE -->
+<!-- 8 RESEARCH + PRIOR ART -->
 <section class="slide">
-  <div class="rubric">Criterion ③ · Relevance to AI/ML & Emerging Technology</div>
-  <div class="kicker">AI/ML Relevance</div>
-  <h1>How IP applies to AI/ML in Makad</h1>
-  <div class="body"><table class="data">
-    <tr><th>AI/ML layer</th><th>Type</th><th>IP treatment</th><th>Makad status</th></tr>
-    <tr>
-      <td><strong>Cloud NLU / STT</strong></td>
-      <td>Pre-trained model (API)</td>
-      <td>Provider owns weights; ToS governs output use</td>
-      <td>I own intent mappings + character responses built on top</td>
-    </tr>
-    <tr>
-      <td><strong>Person tracking</strong></td>
-      <td>CV algorithm (OpenCV/MediaPipe)</td>
-      <td>OSS license on library; copyright on my integration code</td>
-      <td>My tuning + pipeline code is copyrightable</td>
-    </tr>
-    <tr>
-      <td><strong>Training data</strong></td>
-      <td>Third-party datasets</td>
-      <td>Dataset license restricts commercial use / attribution</td>
-      <td>Makad doesn't train models — uses pre-trained APIs only</td>
-    </tr>
-    <tr>
-      <td><strong>AI-generated output</strong></td>
-      <td>Model responses</td>
-      <td>Human authorship required for copyright (Thaler 2023)</td>
-      <td>Makad's face/sound/motion layers are human-authored, not AI-generated</td>
-    </tr>
-    <tr>
-      <td><strong>Expression composer</strong></td>
-      <td>System algorithm (mine)</td>
-      <td>Copyright on source code + documentation</td>
-      <td>Coordinates AI inputs into authored character behaviour</td>
-    </tr>
-    <tr>
-      <td><strong>Spotify playback</strong></td>
-      <td>Third-party API</td>
-      <td>Trademark + ToS — can't rebrand or redistribute</td>
-      <td>Demo use only under developer terms</td>
-    </tr>
-  </table></div>
-  <div class="footer">10 / 15 · EU AI Act 2024/1689 · India DPDP Act 2023</div>
+  <div class="kicker">Research & Prior Art</div>
+  <h1>Standing on published research — without copying it</h1>
+  <p class="lead">Makad's motion design cites academic work. That informs design but doesn't transfer ownership.</p>
+  <div class="body two">
+    <div class="box">
+      <h2>Research I build on</h2>
+      <ul>
+        <li><strong>Plos One 2024</strong> — human nod kinematics → informs head motion timing in RP-01 storyboard</li>
+        <li><strong>HRI / animation refs</strong> — WALL-E, BB-8 puppetry papers for anticipatory motion principles</li>
+        <li><strong>RP-01 storyboard v0.2</strong> — my original 19-motion choreography; cites research, adds authored keyframes</li>
+      </ul>
+      <p style="margin-top:10px;font-size:12px;color:#888">Citing a paper ≠ owning it. My copyright covers the storyboard and implementation; prior art also limits what could ever be patented.</p>
+    </div>
+    <div class="imgbox"><img src="assets/mvp-after-head-servo-archv1.png" alt="Head mechanism"/></div>
+  </div>
+  <div class="footer">8 / 13</div>
 </section>
 
-<!-- 11 CRITICAL ANALYSIS -->
+<!-- 9 CRITICAL ANALYSIS -->
 <section class="slide">
-  <div class="rubric">Criterion ④ · Critical Analysis & Innovation Insight</div>
   <div class="kicker">Critical Analysis</div>
-  <h1>Gaps, risks & ethical implications</h1>
+  <h1>Gaps, ethics & my honest read</h1>
   <div class="body two">
     <div class="box">
-      <h2>IP gaps I identified</h2>
+      <h2>IP gaps in Makad today</h2>
       <ul>
-        <li><strong>No copyright registration filed</strong> — automatic protection exists but registration strengthens enforcement</li>
-        <li><strong>Incomplete license audit</strong> — LVGL, OpenCV, ESP-IDF, Pi OS need tracked compatibility matrix</li>
-        <li><strong>Cloud AI ToS unclear</strong> — commercial/demo use of API outputs depends on provider terms</li>
-        <li><strong>Public GitHub</strong> — transparency for academic eval; destroys trade secret on published assets</li>
-        <li><strong>Derivative-work line</strong> — astromech genre OK; must never cross into Disney protected likeness</li>
+        <li><strong>No copyright registration yet</strong> — protection is automatic but registration helps if disputed</li>
+        <li><strong>License audit incomplete</strong> — LVGL, OpenCV, ESP-IDF, Pi OS need a tracked list</li>
+        <li><strong>Cloud API ToS</strong> — demo/recording rights depend on provider terms</li>
+        <li><strong>Public GitHub</strong> — good for academic transparency; can't claim trade secret on what's published</li>
+        <li><strong>Patent not planned</strong> — 3-axis head has prior art; student V1 doesn't justify filing cost</li>
       </ul>
     </div>
     <div class="box">
-      <h2>Ethical & policy implications</h2>
+      <h2>Beyond IP — ethics & policy</h2>
       <ul>
-        <li><strong>DPDP Act 2023 (India)</strong> — camera + mic person tracking requires consent framework</li>
-        <li><strong>IT Rules 2021</strong> — home robot with recording capability triggers privacy obligations</li>
-        <li><strong>EU AI Act 2024</strong> — transparency on AI subsystems if product ever sold in EU</li>
-        <li><strong>Open vs closed</strong> — publishing storyboard helps evaluation but reduces trade secret value</li>
+        <li><strong>Camera + mic in home</strong> — India DPDP Act 2023 applies to person tracking; consent needed</li>
+        <li><strong>AI transparency</strong> — EU AI Act 2024 would require disclosure if productized in EU</li>
+        <li><strong>Human authorship</strong> — all creative layers trace to my design; AI is a pipeline tool, not the author</li>
       </ul>
-      <div class="callout"><p><strong>My evaluation:</strong> Makad's defensible IP is the authored expression layer — not AI models. Copyright is the only IP type clearly worth acting on before V1.</p></div>
+      <div class="callout"><p><strong>Bottom line:</strong> Makad's innovation is the expression system. Its defensible IP is the authored character layer — sounds, motions, animations, composer code.</p></div>
     </div>
   </div>
-  <div class="footer">11 / 15</div>
+  <div class="footer">9 / 13</div>
 </section>
 
-<!-- 12 FUTURE OUTLOOK -->
+<!-- 10 MY IP PLAN -->
 <section class="slide">
-  <div class="rubric">Criterion ④ · Innovation Insight · Future Outlook</div>
-  <div class="kicker">Future Outlook</div>
-  <h1>IP strategy before & after V1 demo</h1>
+  <div class="kicker">My Plan</div>
+  <h1>What I'm doing about IP before V1 demo</h1>
+  <p class="lead">Concrete steps — not theoretical. This is my IP plan for Makad.</p>
   <div class="body"><ol class="steps">
-    <li><strong>Before V1 (now → Dec 2026):</strong> document human authorship in git; copyright-register astromech audio + animations; complete OSS license audit; review cloud NLU + Spotify ToS</li>
-    <li><strong>At V1 demo:</strong> keep all assets original — no film rips, no Disney marks; demo recording rights confirmed under API terms</li>
-    <li><strong>If productized:</strong> trademark "Makad" in Class 9; evaluate provisional patent on head mechanism if RP-01 gate evidence supports novelty</li>
-    <li><strong>Industry trend:</strong> companion robot IP moat is character/personality (copyright), not hardware specs — same lesson as Anki Vector</li>
-    <li><strong>AI policy shift:</strong> WIPO/USCO moving toward AI-assisted work registration with human-authorship proof — Makad's doc trail is ahead of this curve</li>
+    <li><strong>Keep all creative assets original</strong> — astromech sounds, face animations, head motions documented as human-authored in git history</li>
+    <li><strong>Copyright registration</strong> — file astromech audio library + face animation assets + storyboard at copyright.gov.in before public demo</li>
+    <li><strong>OSS license audit</strong> — BOM of every library (LVGL, OpenCV, ESP-IDF) with license type and attribution requirements</li>
+    <li><strong>API ToS review</strong> — confirm cloud STT and Spotify terms allow demo recording and academic presentation</li>
+    <li><strong>Stay on the safe side of inspiration</strong> — no film rips, no Disney marks, no R2 likeness in final build</li>
+    <li><strong>Document authorship chain</strong> — vision → storyboard → specsheets → code; proves human creative input post-<em>Thaler</em></li>
   </ol></div>
-  <div class="footer">12 / 15</div>
+  <div class="footer">10 / 13</div>
 </section>
 
-<!-- 13 SOURCES -->
+<!-- 11 SOURCES -->
 <section class="slide">
-  <div class="rubric">Criterion ⑤ · Research Depth & Credibility of Sources</div>
-  <div class="kicker">References</div>
-  <h1>Statutes, databases & verified sources</h1>
+  <div class="kicker">Sources</div>
+  <h1>References</h1>
   <div class="body two">
     <div class="box">
-      <h2>Statutes & official databases</h2>
+      <h2>Law & policy</h2>
       <ul>
-        <li>Indian Copyright Act, 1957 — copyright.gov.in (IPO India)</li>
-        <li>Indian Patents Act, 1970 · Trade Marks Act, 1999 — ipindia.gov.in</li>
-        <li>US Copyright Office AI Registration Guidance (Mar 2023) — copyright.gov</li>
-        <li>USPTO Patent Public Search — uspto.gov</li>
+        <li>Indian Copyright Act, 1957 — copyright.gov.in</li>
+        <li><em>Thaler v. Perlmutter</em>, D.D.C. 2023 — AI authorship</li>
+        <li>US Copyright Office AI Guidance (2023)</li>
         <li>WIPO IP & AI Policy Toolkit (2024) — wipo.int</li>
-        <li>WIPO Lex — international IP treaties database</li>
+        <li>India DPDP Act 2023 · EU AI Act 2024/1689</li>
       </ul>
     </div>
     <div class="box">
-      <h2>Cases, journals & project sources</h2>
+      <h2>Research & industry</h2>
       <ul>
-        <li><em>Thaler v. Perlmutter</em>, D.D.C., 2023 — AI authorship landmark</li>
-        <li>Plos One 2024 — nod kinematics (RP-01 storyboard citation)</li>
-        <li>Anki shutdown — TechCrunch, Apr 30 2019 (verified news)</li>
-        <li>Digital Dream Labs Vector acquisition — press releases 2019–2020</li>
-        <li>Wire-Pod open-source Vector server — GitHub project docs</li>
-        <li>M4K4-D project repo — github.com/JiyaSingh18/M4K4-D</li>
-        <li>EU AI Act Reg. 2024/1689 · India DPDP Act 2023</li>
+        <li>Plos One 2024 — nod kinematics (RP-01 citation)</li>
+        <li>Anki Vector shutdown — TechCrunch, Apr 2019</li>
+        <li>Digital Dream Labs acquisition · Wire-Pod open-source revival</li>
+        <li>M4K4-D project — github.com/JiyaSingh18/M4K4-D</li>
+        <li>RP-01 storyboard, vision.md, system-design-brief.md</li>
       </ul>
     </div>
   </div>
-  <div class="footer">13 / 15</div>
+  <div class="footer">11 / 13</div>
 </section>
 
-<!-- 14 Q&A -->
+<!-- 12 Q&A -->
 <section class="slide">
-  <div class="rubric">Criterion ⑧ · Response to Questions (Q&A)</div>
-  <div class="kicker">Q&A Preparation</div>
-  <h1>Anticipated questions & prepared answers</h1>
+  <div class="kicker">Q&A</div>
+  <h1>Questions I expect</h1>
   <div class="body two">
     <div class="box">
       <ul>
-        <li><strong>"Which IP type matters most for Makad?"</strong><br>Copyright — all expressive assets are human-authored. Patent/trademark don't fit a student prototype yet.</li>
-        <li><strong>"Can AI own Makad's animations?"</strong><br>No — <em>Thaler v. Perlmutter</em> (2023). AI assists NLU/tracking; I authored face, sound, and motion layers.</li>
-        <li><strong>"Is Makad copying Star Wars?"</strong><br>Genre inspiration ≠ derivative work. Original name, sounds, silhouette. Must not use Disney marks or R2 likeness.</li>
-        <li><strong>"Why cite Anki Vector?"</strong><br>Same product category — AI companion robot, cloud dependency, IP determined survival after shutdown.</li>
+        <li><strong>"What's innovative — the AI or the robot?"</strong><br>The expression system. AI handles speech and tracking; I authored the character layer that makes M4 feel alive.</li>
+        <li><strong>"Can you patent Makad?"</strong><br>Probably not worth it — prior art on desktop robot heads. Copyright on authored assets is the realistic protection.</li>
+        <li><strong>"Is this a Star Wars copy?"</strong><br>Inspired by the archetype. Original name, sounds, motions, silhouette. No Disney marks.</li>
       </ul>
     </div>
     <div class="box">
       <ul>
-        <li><strong>"Why not patent the 3-axis head?"</strong><br>Prior art in desktop robots + Plos One nod research. Filing cost and novelty bar don't fit Dec 2026 student V1.</li>
-        <li><strong>"Who owns cloud NLU output?"</strong><br>API provider's ToS governs model output. I own integration code and character layer on top.</li>
-        <li><strong>"Biggest IP risk right now?"</strong><br>Incomplete OSS license audit + potential Disney derivative-work line if aesthetic crosses into protected likeness.</li>
-        <li><strong>"What would you file first?"</strong><br>Copyright registration on astromech audio + face animations — cheapest, clearest fit for Makad today.</li>
+        <li><strong>"Who owns the AI output?"</strong><br>Cloud provider's ToS governs model output. I own everything built on top — composer, animations, sounds.</li>
+        <li><strong>"Why Anki Vector?"</strong><br>Same category — AI companion robot. Shows why owning your character IP matters when cloud services fail.</li>
+        <li><strong>"Biggest risk right now?"</strong><br>Incomplete license audit + accidentally using third-party sounds or likeness instead of original assets.</li>
       </ul>
     </div>
   </div>
-  <div class="footer">14 / 15</div>
+  <div class="footer">12 / 13</div>
 </section>
 
-<!-- 15 THANK YOU -->
+<!-- THANK YOU -->
 <section class="slide hero center">
   <div class="bg"><img src="assets/makad-wall-e-hybrid-wheel-concept.png" alt=""/></div>
   <div class="overlay"></div>
   <div class="hero-text">
     <h1 style="font-size:44px">Thank you</h1>
     <p class="hero-sub">Questions?</p>
-    <div class="hero-meta"><b>IP & Innovation in AI — Makad (M4K4-D)</b><br>Jiya Singh · 2309397<br>github.com/JiyaSingh18/M4K4-D</div>
+    <div class="hero-meta"><b>Jiya Singh</b> · 2309397<br>Makad (M4K4-D) · IP & Innovation in AI</div>
   </div>
 </section>
 
 </div></div>
 
 <div class="bar">
-  <button onclick="prev()">←</button><span id="ctr">1 / 15</span><button onclick="next()">→</button>
-  <span style="opacity:.5">F11 fullscreen · ← → navigate</span>
+  <button onclick="prev()">←</button><span id="ctr">1 / 13</span><button onclick="next()">→</button>
+  <span style="opacity:.5">F11 · ← →</span>
 </div>
 
 <script>
