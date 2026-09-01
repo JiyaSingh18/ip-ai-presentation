@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>IP & Innovation in AI — Presentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#000;font-family:Inter,system-ui,sans-serif;color:#eee}
+
+.viewport{position:fixed;top:0;left:0;right:0;bottom:44px;display:flex;align-items:center;justify-content:center}
+.deck{width:1280px;height:720px;transform:scale(var(--sc,1));position:relative}
+.slide{position:absolute;inset:0;display:none;background:linear-gradient(160deg,#0a1628 0%,#0d1117 100%);color:#eceae6}
+.slide.active{display:flex;flex-direction:column}
+
+.bar{position:fixed;bottom:0;left:0;right:0;height:44px;background:#0a1020;border-top:1px solid #1e3a5f;display:flex;align-items:center;justify-content:center;gap:12px;font-size:11px;color:#8899aa}
+.bar button{background:#152238;border:1px solid #2a4060;color:#ccd6e0;padding:5px 14px;border-radius:4px;cursor:pointer;font:inherit}
+
+.frame{width:1280px;height:720px;padding:40px 56px 32px;display:flex;flex-direction:column;color:#eceae6}
+.kicker{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#4db8ff;margin-bottom:6px}
+.title{font-size:30px;font-weight:800;color:#ffffff;line-height:1.15;margin-bottom:10px}
+.lead{font-size:14px;color:#a8b4c4;line-height:1.55;margin-bottom:16px;max-width:920px}
+.main{flex:1;min-height:0;overflow:hidden}
+.foot{margin-top:auto;padding-top:10px;text-align:right;font-size:10px;color:#445566}
+
+/* hero */
+.frame.hero{padding:0;position:relative}
+.hero .bg{position:absolute;inset:0;background:linear-gradient(135deg,#0a1628 0%,#122a4a 40%,#0d2840 100%)}
+.hero .grid{position:absolute;inset:0;opacity:.08;background-image:linear-gradient(#4db8ff 1px,transparent 1px),linear-gradient(90deg,#4db8ff 1px,transparent 1px);background-size:48px 48px}
+.hero .txt{position:relative;z-index:2;padding:64px 72px;display:flex;flex-direction:column;justify-content:center;height:100%}
+.hero h1{font-size:52px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:10px}
+.hero .sub{font-size:20px;color:#8ab4d4;margin-bottom:32px;max-width:700px;line-height:1.45}
+.hero .meta{font-size:14px;color:#667788;line-height:2.2}
+.hero .meta b{color:#eee}
+.hero.center .txt{align-items:center;text-align:center}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px;height:100%}
+.box{background:rgba(20,35,55,.85);border:1px solid #2a4060;border-radius:10px;padding:20px 22px;height:100%;overflow:hidden}
+.box h2{font-size:14px;font-weight:700;color:#4db8ff;margin-bottom:10px}
+.box p,.box li{font-size:13px;color:#b0bcc8;line-height:1.55}
+.box ul{padding-left:16px}
+.box li{margin-bottom:6px}
+.box li strong{color:#fff}
+
+.callout{background:rgba(77,184,255,.08);border:1px solid rgba(77,184,255,.25);border-radius:10px;padding:14px 18px;margin-top:10px}
+.callout p{font-size:13px;color:#d0dae8;line-height:1.5}
+.callout strong{color:#4db8ff}
+
+table.data{width:100%;border-collapse:collapse;font-size:12px}
+table.data th{background:#152238;padding:9px 11px;text-align:left;font-size:9px;color:#778899;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #2a4060}
+table.data td{padding:9px 11px;border-bottom:1px solid #1a2840;color:#b0bcc8;vertical-align:top;line-height:1.45}
+table.data td strong{color:#fff}
+table.data tr:last-child td{border:none}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;height:100%}
+.card{background:rgba(20,35,55,.85);border:1px solid #2a4060;border-radius:10px;padding:16px 18px;display:flex;flex-direction:column}
+.card .icon{font-size:22px;margin-bottom:8px}
+.card h3{font-size:13px;font-weight:700;color:#4db8ff;margin-bottom:6px}
+.card p{font-size:11.5px;color:#99aabb;line-height:1.45;flex:1}
+
+.steps{counter-reset:s;list-style:none}
+.steps li{counter-increment:s;font-size:13px;color:#b0bcc8;padding:8px 0 8px 32px;border-bottom:1px solid #1a2840;position:relative;line-height:1.45}
+.steps li:last-child{border:none}
+.steps li::before{content:counter(s);position:absolute;left:0;top:8px;width:22px;height:22px;background:#4db8ff;color:#000;font-size:11px;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+.tag{display:inline-block;font-size:9px;font-weight:600;padding:3px 8px;border-radius:4px;background:rgba(77,184,255,.15);color:#4db8ff;border:1px solid rgba(77,184,255,.3);margin-right:4px}
+
+.rubric{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rb{font-size:11px;color:#8899aa;padding:8px 10px;background:rgba(20,35,55,.6);border-radius:6px;border-left:3px solid #4db8ff;line-height:1.35}
+.rb b{color:#ccc;display:block;font-size:10px;margin-bottom:2px}
+
+.sources{font-size:11px;color:#8899aa;line-height:1.6;columns:2;column-gap:24px}
+.sources div{break-inside:avoid;margin-bottom:8px}
+.sources a{color:#4db8ff;text-decoration:none}
+
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;height:100%}
+.vs .mid{display:flex;align-items:center;font-size:18px;font-weight:800;color:#4db8ff}
+</style>
+</head>
+<body>
+
+<div class="viewport"><div class="deck">
+
+<!-- 01 TITLE -->
+<section class="slide active"><div class="frame hero">
+  <div class="bg"></div><div class="grid"></div>
+  <div class="txt">
+    <div class="kicker">Intellectual Property & Innovation in AI</div>
+    <h1>Copyright Protection for AI-Generated Works</h1>
+    <p class="sub">Concept clarity, landmark cases, relevance to ML systems, critical analysis & policy outlook</p>
+    <div class="meta"><b>Jiya Singh</b> · Roll No. 2309397<br>Primary IP focus: <b>Copyright</b> · Supporting: Patent, Trade Secret, Trademark</div>
+  </div>
+</div></section>
+
+<!-- 02 AGENDA -->
+<section class="slide"><div class="frame">
+  <div class="kicker">Overview</div>
+  <div class="title">What this presentation covers</div>
+  <p class="lead">Structured to match the evaluation criteria — each section maps to a rubric dimension.</p>
+  <div class="main"><div class="rubric" style="height:100%;align-content:start">
+    <div class="rb"><b>Concept clarity</b>Define Copyright & compare with Patent, Trade Secret, Trademark in AI context</div>
+    <div class="rb"><b>Case study</b>Thaler v. Perlmutter (2023) · Getty Images v. Stability AI (2023–ongoing)</div>
+    <div class="rb"><b>AI/ML relevance</b>Training datasets, model weights, code, prompts & generated outputs</div>
+    <div class="rb"><b>Critical analysis</b>Authorship gap, fair use debate, deepfakes, innovation vs access</div>
+    <div class="rb"><b>Research depth</b>US Copyright Office, WIPO, USPTO, Indian Copyright Act 1957, peer-reviewed sources</div>
+    <div class="rb"><b>Future outlook</b>EU AI Act, US policy evolution, India's emerging AI framework</div>
+  </div></div>
+  <div class="foot">02 / 14</div>
+</div></section>
+
+<!-- 03 WHY IP IN AI -->
+<section class="slide"><div class="frame">
+  <div class="kicker">Context</div>
+  <div class="title">Why does IP matter for AI?</div>
+  <p class="lead">AI systems touch every major IP category simultaneously — creating legal uncertainty at each layer.</p>
+  <div class="main two">
+    <div class="box">
+      <h2>The innovation stack</h2>
+      <ul class="steps">
+        <li><strong>Training data</strong> — millions of copyrighted images, text, code (Copyright)</li>
+        <li><strong>Algorithms & architecture</strong> — may be patented or trade secret (Patent / Trade Secret)</li>
+        <li><strong>Model weights</strong> — often protected as trade secrets (Trade Secret)</li>
+        <li><strong>Product name & brand</strong> — ChatGPT, Gemini, Copilot (Trademark)</li>
+        <li><strong>Generated output</strong> — images, text, code — who owns it? (Copyright — our focus)</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h2>Central question</h2>
+      <p style="margin-bottom:12px">When an AI model produces a poem, image, or code snippet — <strong style="color:#fff">who is the author?</strong> Can it be copyrighted at all?</p>
+      <div class="callout"><p><strong>Our thesis:</strong> Copyright law was designed for human creators. AI exposes a fundamental gap — and courts are now defining the boundaries case by case.</p></div>
+      <p style="margin-top:12px;font-size:12px;color:#8899aa">Global AI market projected &gt;$1.8T by 2030 — IP clarity is essential for investment and innovation.</p>
+    </div>
+  </div>
+  <div class="foot">03 / 14</div>
+</div></section>
+
+<!-- 04 IP TYPES -->
+<section class="slide"><div class="frame">
+  <div class="kicker">Concept Clarity</div>
+  <div class="title">Five IP types — definitions & AI application</div>
+  <div class="main"><table class="data">
+    <tr><th>IP Type</th><th>What it protects</th><th>Duration</th><th>AI/ML example</th></tr>
+    <tr><td><strong>Copyright</strong> <span class="tag">Primary focus</span></td><td>Original expressive works — code, images, text, music — fixed in a tangible medium</td><td>Life + 60 yrs (India) · Life + 70 yrs (US)</td><td>Training datasets, source code, AI-generated images/text</td></tr>
+    <tr><td><strong>Patent</strong></td><td>Novel, non-obvious inventions with industrial application</td><td>20 years from filing</td><td>ML algorithms, neural network architectures, hardware (TPUs)</td></tr>
+    <tr><td><strong>Trade Secret</strong></td><td>Confidential business information giving competitive advantage</td><td>Indefinite (if kept secret)</td><td>Model weights, training recipes, proprietary datasets</td></tr>
+    <tr><td><strong>Trademark</strong></td><td>Brand names, logos, identifiers of commercial origin</td><td>Renewable (10 yr cycles in India)</td><td>"ChatGPT", "Gemini", "Midjourney" product names</td></tr>
+    <tr><td><strong>Research Paper</strong></td><td>Academic publication — copyright in expression, not ideas</td><td>Same as copyright</td><td>ArXiv papers, model cards — open vs closed release strategies</td></tr>
+  </table></div>
+  <div class="foot">04 / 14 · Sources: Indian Copyright Act 1957 · US 17 U.S.C. · WIPO IP Handbook</div>
+</div></section>
+
+<!-- 05 COPYRIGHT DEFINITION -->
+<section class="slide"><div class="frame">
+  <div class="kicker">Concept Clarity — Copyright</div>
+  <div class="title">Copyright: legal elements & requirements</div>
+  <div class="main two">
+    <div class="box">
+      <h2>Three requirements for copyright</h2>
+      <ol class="steps">
+        <li><strong>Originality</strong> — work must originate from the author, not copied (low threshold — "sweat of brow" in India)</li>
+        <li><strong>Fixation</strong> — expressed in a tangible/perceptible form (file, recording, print)</li>
+        <li><strong>Human authorship</strong> — author must be a natural person (key AI debate)</li>
+      </ol>
+      <p style="margin-top:10px;font-size:12px;color:#8899aa"><strong>India:</strong> Copyright Act 1957, §2(d) — "author" means the person who causes the work to be created. §13 — literary, artistic, musical, cinematographic works.</p>
+    </div>
+    <div class="box">
+      <h2>What copyright does NOT protect</h2>
+      <ul>
+        <li><strong>Ideas, facts, methods</strong> — only expression is protected</li>
+        <li><strong>AI-generated content with no human input</strong> — US Copyright Office 2023 guidance</li>
+        <li><strong>Works in public domain</strong> — expired copyright or explicitly waived</li>
+      </ul>
+      <div class="callout" style="margin-top:14px"><p><strong>Key distinction:</strong> Copyright protects the <em>expression</em>. Patents protect the <em>invention</em>. Trade secrets protect <em>confidential know-how</em>. All three apply differently to the same AI system.</p></div>
+    </div>
+  </div>
+  <div class="foot">05 / 14</div>
+</div></section>
+
+<!-- 06 CASE 1 THALER -->
+<section class="slide"><div class="frame">
+  <div class="kicker">Case Study 1</div>
+  <div class="title">Thaler v. Perlmutter (2023) — Can AI be an author?</div>
+  <p class="lead">Landmark US federal court ruling on AI authorship for copyright registration.</p>
+  <div class="main two">
+    <div class="box">
+      <h2>Case facts</h2>
+      <ul>
+        <li>Dr. Stephen Thaler created <strong>DABUS</strong>, an AI system that autonomously generated artwork titled "A Recent Entrance to Paradise"</li>
+        <li>Thaler applied to US Copyright Office to register the work listing <strong>DABUS as the sole author</strong></li>
+        <li>Copyright Office refused — work lacked human authorship</li>
+        <li>Thaler sued Register of Copyrights Perlmutter in D.D.C.</li>
+      </ul>
+      <p style="margin-top:10px"><span class="tag">Court</span> US District Court, D.C. · <span class="tag">Year</span> 2023 · <span class="tag">Outcome</span> Affirmed USCO refusal</p>
+    </div>
+    <div class="box">
+      <h2>Court's holding & significance</h2>
+      <ul>
+        <li><strong>"Human authorship is a bedrock requirement"</strong> of US copyright — rooted in Constitution's Copyright Clause</li>
+        <li>AI systems cannot be legal authors — no personhood, no legal standing</li>
+        <li>Human who <em>prompts</em> AI may have copyright in their <em>selection and arrangement</em> — but not the AI's raw output alone</li>
+      </ul>
+      <div class="callout"><p><strong>Parallel:</strong> Thaler also lost patent cases (DABUS as inventor) — USPTO and Federal Circuit held inventors must be natural persons. Same principle across IP types.</p></div>
+    </div>
+  </div>
+  <div class="foot">06 / 14 · Thaler v. Perlmutter, No. 1:22-cv-01564 (D.D.C. Aug. 18, 2023)</div>
+</div></section>
+
+<!-- 07 CASE 2 GETTY -->
+<section class="slide"><div class="frame">
+  <div class="kicker">Case Study 2</div>
+  <div class="title">Getty Images v. Stability AI (2023–ongoing)</div>
+  <p class="lead">Major industry dispute — training generative AI on copyrighted images without license.</p>
+  <div class="main two">
+    <div class="box">
+      <h2>Dispute summary</h2>
+      <ul>
+        <li>Getty Images sued Stability AI in <strong>UK (2023)</strong> and <strong>US (SDNY, 2023)</strong></li>
+        <li>Allegation: Stability AI scraped <strong>12+ million Getty images</strong> from the web to train Stable Diffusion without permission or compensation</li>
+        <li>Getty claims: copyright infringement, trademark infringement (Getty watermark appeared in AI outputs), unfair competition</li>
+        <li>Stability AI defence: fair use (US) / text-and-data mining exception (UK)</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h2>Why this case matters for AI/ML</h2>
+      <ul>
+        <li>Tests whether <strong>training on copyrighted data</strong> = infringement or fair use</li>
+        <li>US fair use four-factor test: purpose, nature, amount, market effect — all contested for ML training</li>
+        <li>Precedent: <em>Authors Guild v. Google (2015)</em> — book scanning for search was fair use; but generative output competes with originals</li>
+        <li>Also relevant: <strong>NYT v. OpenAI (2023)</strong> — newspaper articles used to train ChatGPT</li>
+      </ul>
+      <div class="callout"><p><strong>Status:</strong> Ongoing litigation — no final ruling yet. Outcome will shape the entire generative AI industry's data practices.</p></div>
+    </div>
+  </div>
+  <div class="foot">07 / 14 · Getty Images v. Stability AI Ltd., 1:23-cv-00135 (D. Del. 2023)</div>
+</div></section>
+
+<!-- 08 AI RELEVANCE -->
+<section class="slide"><div class="frame">
+  <div class="kicker">Relevance to AI/ML</div>
+  <div class="title">How copyright applies at each layer of an AI system</div>
+  <div class="main"><table class="data">
+    <tr><th>AI component</th><th>Copyright issue</th><th>Current legal position</th></tr>
+    <tr><td><strong>Training dataset</strong></td><td>Scraping copyrighted web content (images, books, code)</td><td>Disputed — fair use defence; Getty/NYT cases pending</td></tr>
+    <tr><td><strong>Source code</strong> (PyTorch, CUDA)</td><td>Open-source licenses (MIT, Apache) vs proprietary</td><td>License terms govern — copyright retained by authors</td></tr>
+    <tr><td><strong>Model weights</strong></td><td>Are learned parameters "copies" of training data?</td><td>Generally treated as trade secret, not copyright; legal theory unsettled</td></tr>
+    <tr><td><strong>Prompts</strong></td><td>User-written prompts — original expression?</td><td>Short factual prompts unlikely protected; detailed creative prompts may be</td></tr>
+    <tr><td><strong>AI-generated output</strong></td><td>Image, text, music, code produced by model</td><td>No copyright if purely AI-generated (Thaler); human-edited output may qualify</td></tr>
+    <tr><td><strong>AI-generated code</strong></td><td>GitHub Copilot trained on public repos (incl. GPL code)</td><td>Class action filed 2022 — licence compliance of generated code unsettled</td></tr>
+  </table></div>
+  <div class="foot">08 / 14 · US Copyright Office, "AI Registration Guidance" (Mar 2023, updated 2024)</div>
+</div></section>
+
+<!-- 09 PATENT & OTHER IP -->
+<section class="slide"><div class="frame">
+  <div class="kicker">Supporting IP Types</div>
+  <div class="title">Patent, trade secret & trademark in AI</div>
+  <div class="main cards">
+    <div class="card"><div class="icon">⚙️</div><h3>Patent</h3>
+      <p><strong>Definition:</strong> Exclusive right to an invention — novel, non-obvious, industrially applicable.</p>
+      <p style="margin-top:8px"><strong>AI case:</strong> Thaler/DABUS — USPTO rejected AI as inventor (2022). <em>Alice Corp v. CLS Bank</em> (2014) — abstract software ideas not patentable without "inventive concept".</p>
+      <p style="margin-top:8px"><strong>Example:</strong> Google's TPU chip patents; OpenAI's GPT architecture patent applications.</p>
+    </div>
+    <div class="card"><div class="icon">🔒</div><h3>Trade Secret</h3>
+      <p><strong>Definition:</strong> Confidential information giving business advantage — protected if secrecy maintained.</p>
+      <p style="margin-top:8px"><strong>AI case:</strong> OpenAI has NOT open-sourced GPT-4 weights — protected as trade secret. Google v. Uber (Waymo) — engineer stole self-driving trade secrets.</p>
+      <p style="margin-top:8px"><strong>India:</strong> No standalone trade secret statute — protected under contract law & common law.</p>
+    </div>
+    <div class="card"><div class="icon">™</div><h3>Trademark</h3>
+      <p><strong>Definition:</strong> Protects brand identifiers — prevents consumer confusion about product origin.</p>
+      <p style="margin-top:8px"><strong>AI case:</strong> "ChatGPT" registered trademark (OpenAI). Getty watermark appearing in Stable Diffusion outputs = trademark + copyright claim.</p>
+      <p style="margin-top:8px"><strong>India:</strong> Trade Marks Act 1999 — AI product names registerable in Class 9 (software) & Class 42 (SaaS).</p>
+    </div>
+  </div>
+  <div class="foot">09 / 14</div>
+</div></section>
+
+<!-- 10 CRITICAL ANALYSIS -->
+<section class="slide"><div class="frame">
+  <div class="kicker">Critical Analysis</div>
+  <div class="title">Gaps, ethics & policy tensions</div>
+  <div class="main two">
+    <div class="box">
+      <h2>Gaps identified</h2>
+      <ul>
+        <li><strong>Authorship vacuum</strong> — law requires human author; AI output falls into public domain by default</li>
+        <li><strong>Training data rights</strong> — no clear global rule on scraping for ML; fair use is US-specific</li>
+        <li><strong>Jurisdiction fragmentation</strong> — US, EU, UK, India all developing different rules simultaneously</li>
+        <li><strong>Enforcement impracticality</strong> — millions of users generate infringing content daily</li>
+        <li><strong>Open source vs closed</strong> — Meta LLaMA leak showed trade secret fragility</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h2>Ethical & innovation implications</h2>
+      <ul>
+        <li><strong>Creator livelihoods</strong> — artists/writers whose work trains models receive no compensation (Getty argument)</li>
+        <li><strong>Deepfakes & personality rights</strong> — copyright doesn't address non-consensual likeness use</li>
+        <li><strong>Innovation access</strong> — strict copyright on training data could slow AI research (Stability AI argument)</li>
+        <li><strong>Transparency</strong> — EU AI Act requires disclosure of training data sources for high-risk AI</li>
+      </ul>
+      <div class="callout"><p><strong>My evaluation:</strong> Copyright alone cannot regulate AI — we need a layered framework combining copyright (outputs), trade secret (weights), patent (methods), and new sui generis rights for training data.</p></div>
+    </div>
+  </div>
+  <div class="foot">10 / 14</div>
+</div></section>
+
+<!-- 11 FUTURE OUTLOOK -->
+<section class="slide"><div class="frame">
+  <div class="kicker">Future Outlook</div>
+  <div class="title">Where is AI IP law heading?</div>
+  <div class="main"><table class="data">
+    <tr><th>Region / body</th><th>Development</th><th>Implication for AI</th></tr>
+    <tr><td><strong>United States</strong></td><td>Copyright Office AI guidance (2023–24); NO AI FRAUD Act (deepfakes); pending Getty/NYT rulings</td><td>Human-in-the-loop works get partial copyright; pure AI output excluded</td></tr>
+    <tr><td><strong>European Union</strong></td><td>EU AI Act (2024) — transparency obligations; Copyright Directive text-and-data mining exceptions (Art. 3–4)</td><td>Opt-out system for rights holders; mandatory training data disclosure for GPAI models</td></tr>
+    <tr><td><strong>United Kingdom</strong></td><td>UK IPO consultation on AI and IP (2022); text-and-data mining exception for any purpose (2023)</td><td>More permissive training environment than US</td></tr>
+    <tr><td><strong>India</strong></td><td>Copyright Act 1957 (no AI amendment yet); NITI Aayog AI strategy; IT Rules 2021 for intermediaries</td><td>§2(d) "author" undefined for AI — gap needs legislative action; IT Ministry AI governance framework emerging</td></tr>
+    <tr><td><strong>WIPO</strong></td><td>Conversation on IP and AI — 7 sessions (2019–24); no treaty yet</td><td>Global harmonisation attempted but no consensus on authorship or training data</td></tr>
+  </table></div>
+  <div class="foot">11 / 14 · EU AI Act (Regulation 2024/1689) · WIPO IP & AI Policy Toolkit (2024)</div>
+</div></section>
+
+<!-- 12 SOURCES -->
+<section class="slide"><div class="frame">
+  <div class="kicker">Research & Credibility</div>
+  <div class="title">Key sources & citations</div>
+  <div class="main"><div class="sources">
+    <div><strong>Statutes</strong><br>Indian Copyright Act, 1957 (§2, §13, §14) · US Copyright Act, 17 U.S.C. §102 · EU Directive 2019/790 (DSM) · EU AI Act 2024/1689</div>
+    <div><strong>Case law</strong><br><em>Thaler v. Perlmutter</em>, 2023 WL 5237761 (D.D.C.) · <em>Getty Images v. Stability AI</em>, 1:23-cv-00135 (D. Del.) · <em>Authors Guild v. Google</em>, 804 F.3d 202 (2d Cir. 2015) · <em>Alice Corp. v. CLS Bank</em>, 573 U.S. 208 (2014)</div>
+    <div><strong>Government / IPO</strong><br>US Copyright Office, "Copyright Registration Guidance: Works Containing AI-Generated Material" (Mar 2023) · USPTO Inventorship Guidance for AI-Assisted Inventions (Feb 2024) · UK IPO AI & IP Consultation (2022) · WIPO Conversation on IP and AI</div>
+    <div><strong>Academic & industry</strong><br>Lemley & Casey, "Fair Learning" (2020) · Henderson et al., "Foundation Models & Fair Use" (2023) · Stanford HAI AI Index Report 2024 · MIT Technology Review coverage of Getty suit</div>
+    <div><strong>Databases</strong><br>WIPO Lex · USPTO Patent Public Search · Indian Copyright Office (copyright.gov.in) · CourtListener / PACER for US filings</div>
+    <div><strong>News (verified)</strong><br>Reuters, "Getty Images sues Stability AI" (Feb 2023) · NYT v. OpenAI complaint (Dec 2023) · Copyright Office denial letter to Thaler (Feb 2022)</div>
+  </div></div>
+  <div class="foot">12 / 14</div>
+</div></section>
+
+<!-- 13 Q&A PREP -->
+<section class="slide"><div class="frame">
+  <div class="kicker">Q&A Preparation</div>
+  <div class="title">Anticipated questions & how to answer</div>
+  <div class="main two">
+    <div class="box">
+      <h2>Likely questions</h2>
+      <ul>
+        <li><strong>"Can I copyright ChatGPT's output?"</strong> → No, if purely AI-generated. Yes, for substantial human editing/selection (USCO 2023).</li>
+        <li><strong>"Is training on web data legal?"</strong> → Unsettled. Fair use defence in US; opt-out system in EU; no clear rule in India.</li>
+        <li><strong>"How is India different from the US?"</strong> → India lacks AI-specific copyright amendment; relies on §2(d) human author requirement.</li>
+        <li><strong>"What about open-source AI models?"</strong> → License governs (Apache 2.0, MIT) — different from copyright registration.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h2>Key arguments to defend</h2>
+      <ul>
+        <li>Copyright <strong>cannot</strong> be stretched to cover AI authorship without legislative change</li>
+        <li>Training data use is the <strong>most urgent unresolved issue</strong> — not output authorship</li>
+        <li>Layered IP approach (copyright + trade secret + patent) is more realistic than one-size-fits-all</li>
+        <li>Policy must balance <strong>creator rights vs innovation access</strong> — both are valid</li>
+      </ul>
+      <div class="callout"><p><strong>Conclusion:</strong> AI hasn't broken IP law — it has exposed gaps that were always there. The next 2–3 years of court rulings (Getty, NYT) will define the industry.</p></div>
+    </div>
+  </div>
+  <div class="foot">13 / 14</div>
+</div></section>
+
+<!-- 14 THANK YOU -->
+<section class="slide"><div class="frame hero center">
+  <div class="bg"></div><div class="grid"></div>
+  <div class="txt">
+    <h1 style="font-size:44px">Thank you</h1>
+    <p class="sub" style="margin-bottom:0">Questions & discussion</p>
+    <div class="meta" style="margin-top:24px">
+      <b>Intellectual Property & Innovation in AI</b><br>
+      Copyright Protection for AI-Generated Works<br>
+      Jiya Singh · 2309397
+    </div>
+  </div>
+</div></section>
+
+</div></div>
+
+<div class="bar">
+  <button onclick="prev()">← Previous</button>
+  <span id="ctr">1 / 14</span>
+  <button onclick="next()">Next →</button>
+  <span style="opacity:.5">F11 fullscreen · 1280×720</span>
+</div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];let cur=0;
+function scale(){document.querySelector('.deck').style.setProperty('--sc',Math.min(innerWidth/1280,(innerHeight-44)/720))}
+function go(n){cur=Math.max(0,Math.min(n,slides.length-1));slides.forEach((s,i)=>s.classList.toggle('active',i===cur));document.getElementById('ctr').textContent=(cur+1)+' / '+slides.length}
+function next(){go(cur+1)}function prev(){go(cur-1)}
+addEventListener('resize',scale);
+addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();next()}if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();prev()}});
+scale();go(0);
+</script>
+</body>
+</html>
