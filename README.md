@@ -1,35 +1,32 @@
-# IP & Innovation in AI — Presentation
+# IP & Innovation in AI — Makad (M4K4-D)
 
-Screenshot-ready slide deck for **Intellectual Property and Innovation in AI**.
+Screenshot-ready presentation analysing **Intellectual Property** for the **Makad / M4K4-D** AI companion robot project.
 
-**Topic:** Copyright Protection for AI-Generated Works (with Patent, Trade Secret, Trademark coverage)
+Deploy on [Vercel](https://vercel.com) — import repo, no build step.
 
-**Live:** Deploy on [Vercel](https://vercel.com) — import this repo, no build settings needed.
+## Topic
+
+IP protection strategy applied to Makad: Copyright, Patent, Trade Secret, Trademark — with Anki Vector as industry case study.
 
 ## Slides (14)
 
-| # | Topic | Rubric criterion |
-|---|-------|------------------|
-| 01 | Title | — |
-| 02 | Agenda / rubric map | All criteria |
-| 03 | Why IP matters in AI | Context |
-| 04 | Five IP types defined | Concept clarity |
-| 05 | Copyright legal elements | Concept clarity |
-| 06 | Case: Thaler v. Perlmutter (2023) | Case study |
-| 07 | Case: Getty v. Stability AI | Case study |
-| 08 | Copyright at each AI layer | AI/ML relevance |
-| 09 | Patent, trade secret, trademark | Concept clarity |
-| 10 | Critical analysis & ethics | Critical analysis |
-| 11 | Future outlook (US, EU, India) | Innovation insight |
-| 12 | Sources & citations | Research depth |
-| 13 | Q&A preparation | Q&A readiness |
+| # | Content | Rubric |
+|---|---------|--------|
+| 01 | Title (Makad hero) | — |
+| 02 | What is Makad + why IP matters | Context |
+| 03 | Five IP types mapped to Makad | Concept clarity |
+| 04 | Copyright — animations, sounds, storyboard, code | Concept clarity |
+| 05 | Patent — 3-axis head, expression composer | Concept clarity |
+| 06 | Trade secret + trademark | Concept clarity |
+| 07 | Case study: Anki Vector shutdown | Case study |
+| 08 | AI/ML IP issues in Makad | AI/ML relevance |
+| 09 | Critical analysis & gaps | Critical analysis |
+| 10 | Recommended IP strategy | Innovation insight |
+| 11 | Future outlook | Innovation insight |
+| 12 | Sources | Research depth |
+| 13 | Q&A prep | Q&A |
 | 14 | Thank you | — |
-
-## Controls
-
-- **← / →** — navigate slides
-- **F11** — fullscreen for screenshots
 
 ## Author
 
-Jiya Singh · 2309397
+Jiya Singh · 2309397 · [M4K4-D repo](https://github.com/JiyaSingh18/M4K4-D)
